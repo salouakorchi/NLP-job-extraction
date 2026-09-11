@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% set title = "Tableau de bord" %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <p class="eyebrow">Pipeline local</p>
+    <h1>Extraction structuree d'offres d'emploi</h1>
+  </div>
+  <form class="key-form provider-form" action="{{ url_for('save_api_key') }}" method="post">
+    <label for="llm_provider">Fournisseur LLM</label>
+    <select id="llm_provider" name="llm_provider">
+      {% for provider in status.providers %}
+        <option
+          value="{{ provider.name }}"
+          data-model="{{ provider.default_model }}"
+          data-endpoint="{{ provider.endpoint }}"
+          data-custom="{{ '1' if provider.name == 'custom' else '0' }}"
+          {% if provider.name == status.active_provider %}selected{% endif %}
+        >
+          {{ provider.label }}
+        </option>
+      {% endfor %}
+    </select>
+
+    <label for="model">Modele</label>
+    <input id="model" name="model" value="{{ status.provider_info.model }}" placeholder="{{ status.provider_info.default_model }}">
+
+    <label for="api_key">Cle API</label>
+    <div class="inline-control">
+      <input id="api_key" name="api_key" type="password" placeholder="{{ status.provider_info.api_key_env }}" autocomplete="off">
+      <button type="submit">Enregistrer</button>
+    </div>
+
+    <div class="custom-endpoint" id="customEndpoint">
+      <label for="endpoint">Endpoint custom</label>
+      <input id="endpoint" name="endpoint" value="{{ status.provider_info.endpoint }}" placeholder="https://.../chat/completions">
+    </div>
+    <p class="provider-note">{{ status.provider_info.free_note }}</p>
+  </form>
+</header>
+
+<section
+  class="api-alert{% if status.api_alert %} visible{% endif %}"
+  id="apiAlert"
+  {% if not status.api_alert %}hidden{% endif %}
+>
+  <strong id="apiAlertTitle">Limite API</strong>
+  <p id="apiAlertMessage">
+    {{ status.api_alert.message if status.api_alert else "" }}
+  </p>
+  <small id="apiAlertDetails">
+    {% if status.api_alert %}
+      Strategie {{ status.api_alert.strategy }} - {{ status.api_alert.split }}
+    {% endif %}
+  </small>
+</section>
+
+<section class="metrics-grid" id="metricsGrid">
+  <article class="metric">
+    <span>Brut</span>
+    <strong data-metric="raw_rows">{{ status.raw_rows if status.raw_rows is not none else "0" }}</strong>
+  </article>
+  <article class="metric">
+    <span>Nettoye</span>
+    <strong data-metric="processed_rows">{{ status.processed_rows if status.processed_rows is not none else "0" }}</strong>
+  </article>
+  <article class="metric">
+    <span>Experiment</span>
+    <strong data-metric="experiment_rows">{{ status.experiment_rows if status.experiment_rows is not none else "0" }}</strong>
+  </article>
+  <article class="metric">
+    <span>Evaluation</span>
+    <strong data-metric="evaluation_rows">{{ status.evaluation_rows if status.evaluation_rows is not none else "0" }}</strong>
+  </article>
+  <article class="metric">
+    <span>Verite terrain</span>
+    <strong data-metric="ground_truth_items">{{ status.ground_truth_items if status.ground_truth_items is not none else "0" }}</strong>
+  </article>
+  <article class="metric">
+    <span>Fournisseur</span>
+    <strong class="text-metric" data-metric="active_provider">{{ status.active_provider }}</strong>
+  </article>
+</section>
+
+<section class="panel">
+  <div class="panel-header">
+    <div>
+      <p class="eyebrow">Execution</p>
+      <h2>Etapes du pipeline</h2>
+    </div>
+  </div>
+  <div class="step-grid">
+    {% for step, label in [
+      ("load", "Charger dataset"),
+      ("preprocess", "Pretraiter"),
+      ("split", "Diviser"),
+      ("extract", "Extraire LLM"),
+      ("evaluate", "Evaluer"),
+      ("analyze", "Analyser erreurs"),
+      ("report", "Generer rapport"),
+      ("all", "Tout automatique")
+    ] %}
+      <button class="step-button" data-step="{{ step }}">{{ label }}</button>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-header compact">
+    <div>
+      <p class="eyebrow">Extractions evaluation</p>
+      <h2>Etat par strategie</h2>
+    </div>
+  </div>
+  <div class="strategy-list" id="strategyList">
+    {% for name, item in status.extractions.items() %}
+      <div class="strategy-row">
+        <strong>{{ name }}</strong>
+        <span>{{ item.success }} succes</span>
+        <span>{{ item.errors }} erreurs</span>
+        <span>{{ item.total }} total</span>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

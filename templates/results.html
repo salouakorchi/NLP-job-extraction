@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% set title = "Resultats" %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <p class="eyebrow">Sorties</p>
+    <h1>Resultats et visualisations</h1>
+  </div>
+  <a class="secondary-link" href="{{ url_for('index') }}">Executer une etape</a>
+</header>
+
+{% if comparison_html %}
+  <section class="panel table-panel">
+    <div class="panel-header compact">
+      <div>
+        <p class="eyebrow">Evaluation</p>
+        <h2>Table comparative</h2>
+      </div>
+    </div>
+    {{ comparison_html | safe }}
+  </section>
+{% endif %}
+
+<section class="panel">
+  <div class="panel-header compact">
+    <div>
+      <p class="eyebrow">Extractions LLM</p>
+      <h2>Resultats par methode de prompting</h2>
+    </div>
+  </div>
+
+  {% if extraction_groups %}
+    <div class="extraction-groups">
+      {% for group in extraction_groups %}
+        <article class="extraction-group">
+          <div class="extraction-group-head">
+            <div>
+              <p class="eyebrow">{{ group.provider_label }} - {{ group.split_label }}</p>
+              <h3>{{ group.strategy }}</h3>
+              <small>{{ group.filename }}</small>
+            </div>
+            <div class="mini-stats">
+              <span>{{ group.success }} succes</span>
+              <span>{{ group.errors }} erreurs</span>
+              <span>{{ group.total }} total</span>
+            </div>
+          </div>
+
+          {% if group.records %}
+            {% set group_index = loop.index0 %}
+            <div class="extraction-picker" data-extraction-picker>
+              <label for="extraction-select-{{ group_index }}">Choisir une extraction</label>
+              <select id="extraction-select-{{ group_index }}" data-extraction-select>
+                <option value="">Selectionner une offre...</option>
+                {% for item in group.records %}
+                  <option value="{{ loop.index0 }}">
+                    ID {{ item.id }} - {{ "ok" if item.success else "erreur" }} - {{ item.model }}
+                  </option>
+                {% endfor %}
+              </select>
+
+              <p class="empty-note" data-extraction-empty>Selectionnez une offre dans la liste pour afficher son JSON.</p>
+
+              {% for item in group.records %}
+                <article class="extraction-record" data-extraction-record="{{ loop.index0 }}" hidden>
+                  <div class="extraction-record-head">
+                    <strong>ID {{ item.id }}</strong>
+                    <span>{{ item.model }}</span>
+                    {% if item.success %}
+                      <em class="badge ok">ok</em>
+                    {% else %}
+                      <em class="badge warn">erreur</em>
+                    {% endif %}
+                  </div>
+                  {% if item.error %}
+                    <p class="inline-error">{{ item.error }}</p>
+                  {% endif %}
+                  {% if item.job_excerpt %}
+                    <p class="job-excerpt">{{ item.job_excerpt }}</p>
+                  {% endif %}
+                  <pre>{{ item.extraction | json_pretty }}</pre>
+                </article>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="empty-note">Fichier present, mais aucun resultat lisible.</p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty-note">Aucun fichier d'extraction trouve dans <code>results/extractions</code>. Lancez d'abord l'etape Extraire LLM.</p>
+  {% endif %}
+</section>
+
+<section class="viz-grid">
+  {% for viz in visualizations %}
+    <article class="viz-card">
+      <h2>{{ viz.filename }}</h2>
+      {% if viz.exists %}
+        <img src="{{ url_for('visualization_file', filename=viz.filename) }}" alt="{{ viz.filename }}">
+      {% else %}
+        <div class="missing-viz">Image non generee. Lancez l'etape rapport apres evaluation.</div>
+      {% endif %}
+    </article>
+  {% endfor %}
+</section>
+
+{% endblock %}

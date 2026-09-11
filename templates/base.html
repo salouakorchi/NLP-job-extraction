@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "NLP Job Extraction" }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="brand-mark">NLP</span>
+      <span>
+        <strong>Job Extraction</strong>
+        <small>LLM + JSON</small>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="{{ url_for('index') }}">Tableau de bord</a>
+      <a href="{{ url_for('demo') }}">Tester</a>
+      <a href="{{ url_for('results') }}">Resultats</a>
+    </nav>
+    <div class="api-state {{ 'ok' if status.api_key_configured else 'warn' }}">
+      <span>{{ status.provider_info.label }}</span>
+      <strong>{{ "cle presente" if status.api_key_configured else "cle absente" }}</strong>
+    </div>
+  </aside>
+
+  <main class="main">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-stack">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

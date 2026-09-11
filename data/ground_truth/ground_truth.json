@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "job_description": "description as an asc you will be highly influential in growing mind and market share of apple products while building longterm relationships with those who share your passion customer experiences are driven through you and your partner team growing in an ever changing and challenging environment you strive for perfection whether its maintaining visual merchandising or helping to grow and develop your partner team qualifications a passion to help people understand how apple products can enrich their livesexcellent communication skills allowing you to be as comfortable in front of a small group as you are speaking with individuals years preferred working in a dynamic sales andor results driven environment as well as proven success developing customer loyaltyability to encourage a partner team and grow apple business",
+    "titre_original": "Apple Solutions Consultant",
+    "entreprise_originale": "Apple",
+    "ground_truth": {
+      "titre_poste": "Apple Solutions Consultant",
+      "entreprise": "Apple",
+      "localisation": null,
+      "type_contrat": null,
+      "experience_requise": "years preferred working in a dynamic sales and/or results driven environment",
+      "formation_requise": null,
+      "competences_techniques": [
+        "Apple products",
+        "visual merchandising",
+        "sales",
+        "customer loyalty development"
+      ],
+      "competences_douces": [
+        "communication skills",
+        "passion to help people",
+        "building long-term relationships",
+        "strive for perfection",
+        "encourage a partner team"
+      ],
+      "langues_requises": [],
+      "salaire": null,
+      "secteur_activite": "consumer electronics retail",
+      "avantages": []
+    }
+  }
+]

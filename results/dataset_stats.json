@@ -1,0 +1,19 @@
+{
+  "nombre_echantillons": 5,
+  "longueur_min": 828,
+  "longueur_max": 3205,
+  "longueur_moyenne": 2483.2,
+  "top_10_entreprises": {
+    "Google": 1,
+    "Apple": 1,
+    "Netflix": 1,
+    "Robert Half": 1,
+    "TrackFive": 1
+  },
+  "valeurs_nulles": {
+    "id": 0,
+    "titre_original": 0,
+    "entreprise_originale": 0,
+    "job_description": 0
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "zero_shot": {
+    "titre_poste": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "entreprise": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "localisation": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "type_contrat": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "experience_requise": {
+      "exact_match": 0.0,
+      "partial_match": 0.16666666666666666
+    },
+    "formation_requise": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "salaire": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "secteur_activite": {
+      "exact_match": 0.0,
+      "partial_match": 0.0
+    },
+    "competences_techniques": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "competences_douces": {
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714285715
+    },
+    "langues_requises": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "avantages": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "overall_score": 0.7281746031746033,
+    "informative_score": 0.45634920634920634
+  },
+  "constrained": {
+    "titre_poste": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "entreprise": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "localisation": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "type_contrat": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "experience_requise": {
+      "exact_match": 0.0,
+      "partial_match": 0.16666666666666666
+    },
+    "formation_requise": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "salaire": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "secteur_activite": {
+      "exact_match": 0.0,
+      "partial_match": 0.0
+    },
+    "competences_techniques": {
+      "precision": 1.0,
+      "recall": 0.25,
+      "f1": 0.4
+    },
+    "competences_douces": {
+      "precision": 0.6666666666666666,
+      "recall": 0.4,
+      "f1": 0.5
+    },
+    "langues_requises": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "avantages": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "overall_score": 0.7555555555555555,
+    "informative_score": 0.5111111111111112
+  },
+  "few_shot": {
+    "titre_poste": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "entreprise": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "localisation": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "type_contrat": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "experience_requise": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "formation_requise": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "salaire": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "secteur_activite": {
+      "exact_match": 1.0,
+      "partial_match": 1.0
+    },
+    "competences_techniques": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "competences_douces": {
+      "precision": 1.0,
+      "recall": 0.6,
+      "f1": 0.7499999999999999
+    },
+    "langues_requises": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "avantages": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "overall_score": 0.9791666666666666,
+    "informative_score": 0.9583333333333334
+  }
+}

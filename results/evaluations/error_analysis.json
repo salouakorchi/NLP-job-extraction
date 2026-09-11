@@ -1,0 +1,246 @@
+{
+  "zero_shot": {
+    "nombre_exemples": 1,
+    "erreurs_par_champ": {
+      "titre_poste": {
+        "correct": 1
+      },
+      "entreprise": {
+        "correct": 1
+      },
+      "localisation": {
+        "correct": 1
+      },
+      "type_contrat": {
+        "correct": 1
+      },
+      "experience_requise": {
+        "extraction_partielle": 1
+      },
+      "formation_requise": {
+        "correct": 1
+      },
+      "salaire": {
+        "correct": 1
+      },
+      "secteur_activite": {
+        "valeur_incorrecte": 1
+      },
+      "competences_techniques": {
+        "champ_manquant": 1
+      },
+      "competences_douces": {
+        "extraction_partielle": 1
+      },
+      "langues_requises": {
+        "correct": 1
+      },
+      "avantages": {
+        "correct": 1
+      }
+    },
+    "distribution_categories": {
+      "correct": 8,
+      "extraction_partielle": 2,
+      "valeur_incorrecte": 1,
+      "champ_manquant": 1
+    },
+    "top_3_champs_erreurs": [
+      {
+        "champ": "experience_requise",
+        "nb_erreurs": 1
+      },
+      {
+        "champ": "secteur_activite",
+        "nb_erreurs": 1
+      },
+      {
+        "champ": "competences_techniques",
+        "nb_erreurs": 1
+      }
+    ],
+    "types_erreurs_frequents": [
+      [
+        "correct",
+        8
+      ],
+      [
+        "extraction_partielle",
+        2
+      ],
+      [
+        "valeur_incorrecte",
+        1
+      ],
+      [
+        "champ_manquant",
+        1
+      ]
+    ],
+    "exemples_difficiles": [
+      {
+        "id": 1,
+        "nb_erreurs": 4,
+        "categories": {
+          "extraction_partielle": 2,
+          "valeur_incorrecte": 1,
+          "champ_manquant": 1
+        }
+      }
+    ]
+  },
+  "constrained": {
+    "nombre_exemples": 1,
+    "erreurs_par_champ": {
+      "titre_poste": {
+        "correct": 1
+      },
+      "entreprise": {
+        "correct": 1
+      },
+      "localisation": {
+        "correct": 1
+      },
+      "type_contrat": {
+        "correct": 1
+      },
+      "experience_requise": {
+        "extraction_partielle": 1
+      },
+      "formation_requise": {
+        "correct": 1
+      },
+      "salaire": {
+        "correct": 1
+      },
+      "secteur_activite": {
+        "valeur_incorrecte": 1
+      },
+      "competences_techniques": {
+        "extraction_partielle": 1
+      },
+      "competences_douces": {
+        "extraction_partielle": 1
+      },
+      "langues_requises": {
+        "correct": 1
+      },
+      "avantages": {
+        "correct": 1
+      }
+    },
+    "distribution_categories": {
+      "correct": 8,
+      "extraction_partielle": 3,
+      "valeur_incorrecte": 1
+    },
+    "top_3_champs_erreurs": [
+      {
+        "champ": "experience_requise",
+        "nb_erreurs": 1
+      },
+      {
+        "champ": "secteur_activite",
+        "nb_erreurs": 1
+      },
+      {
+        "champ": "competences_techniques",
+        "nb_erreurs": 1
+      }
+    ],
+    "types_erreurs_frequents": [
+      [
+        "correct",
+        8
+      ],
+      [
+        "extraction_partielle",
+        3
+      ],
+      [
+        "valeur_incorrecte",
+        1
+      ]
+    ],
+    "exemples_difficiles": [
+      {
+        "id": 1,
+        "nb_erreurs": 4,
+        "categories": {
+          "extraction_partielle": 3,
+          "valeur_incorrecte": 1
+        }
+      }
+    ]
+  },
+  "few_shot": {
+    "nombre_exemples": 1,
+    "erreurs_par_champ": {
+      "titre_poste": {
+        "correct": 1
+      },
+      "entreprise": {
+        "correct": 1
+      },
+      "localisation": {
+        "correct": 1
+      },
+      "type_contrat": {
+        "correct": 1
+      },
+      "experience_requise": {
+        "correct": 1
+      },
+      "formation_requise": {
+        "correct": 1
+      },
+      "salaire": {
+        "correct": 1
+      },
+      "secteur_activite": {
+        "correct": 1
+      },
+      "competences_techniques": {
+        "correct": 1
+      },
+      "competences_douces": {
+        "extraction_partielle": 1
+      },
+      "langues_requises": {
+        "correct": 1
+      },
+      "avantages": {
+        "correct": 1
+      }
+    },
+    "distribution_categories": {
+      "correct": 11,
+      "extraction_partielle": 1
+    },
+    "top_3_champs_erreurs": [
+      {
+        "champ": "competences_douces",
+        "nb_erreurs": 1
+      }
+    ],
+    "types_erreurs_frequents": [
+      [
+        "correct",
+        11
+      ],
+      [
+        "extraction_partielle",
+        1
+      ]
+    ],
+    "exemples_difficiles": [
+      {
+        "id": 1,
+        "nb_erreurs": 1,
+        "categories": {
+          "extraction_partielle": 1
+        }
+      }
+    ]
+  }
+}

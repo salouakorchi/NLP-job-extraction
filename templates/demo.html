@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% set title = "Tester" %}
+
+{% block content %}
+<header class="page-header">
+  <div>
+    <p class="eyebrow">Extraction libre</p>
+    <h1>Tester une offre d'emploi</h1>
+  </div>
+</header>
+
+<section class="panel">
+  <form method="post" class="demo-form">
+    <label for="job_description">Texte de l'offre en anglais</label>
+    <textarea id="job_description" name="job_description" rows="9" placeholder="Paste an English job posting here.">{{ input_text }}</textarea>
+    <div class="form-actions">
+      <button type="submit">Lancer les 3 strategies</button>
+    </div>
+  </form>
+</section>
+
+{% if results %}
+  <section class="results-grid">
+    {% for item in results %}
+      <article class="result-card">
+        <div class="panel-header compact">
+          <div>
+            <p class="eyebrow">{{ item.provider }} - {{ item.model }}</p>
+            <h2>{{ item.strategy }}</h2>
+          </div>
+          {% if item.error %}
+            <span class="badge warn">erreur</span>
+          {% else %}
+            <span class="badge ok">ok</span>
+          {% endif %}
+        </div>
+        {% if item.error %}
+          <p class="inline-error">{{ item.error }}</p>
+        {% endif %}
+        <pre>{{ item.extraction | json_pretty }}</pre>
+      </article>
+    {% endfor %}
+  </section>
+{% endif %}
+{% endblock %}
